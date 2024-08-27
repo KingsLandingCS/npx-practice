@@ -2,22 +2,30 @@ import React from "react";
 import ReactDom from "react-dom/client";
 import "./index.css";
 
-const author = "John Doe";
-const title = 'Interesting facts for curious minds';
-const img = './images/book-1.jpg';
+const firstBook = {
+    author: "John Doe",
+    title: "Interesting facts for curious minds",
+    img: "./images/book-1.jpg",
+};
+
+const secondBook = {
+    author: "Freida McFaddenFreida McFadden",
+    title: "The Housemaid's Secret",
+    img: "https://m.media-amazon.com/images/I/81LZXcfKqJL._AC_UL320_.jpg",
+};
 
 const BookList = () => {
     return (<section className="booklist">
-        <Book author={author} title={title} img={img} />
-        <Book author={author} title={title} img={img} />
-    </section>)
+        <Book author={firstBook.author} title={firstBook.title} img={firstBook.img} />
+        <Book author={secondBook.author} title={secondBook.title} img={secondBook.img} />
+    </section>);
 };
 
 const Book = (props) => {
     console.log(props);
     return (<article className="book">
-        return <img src={props.img} alt={props.title} />
-        return <h2>{props.title}</h2>
+        <img src={props.img} alt={props.title} />
+        <h2>{props.title}</h2>
         <h4>{props.author.toUpperCase()}</h4>
     </article >);
 };
