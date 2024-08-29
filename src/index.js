@@ -2,33 +2,29 @@ import React, { Children } from "react";
 import ReactDom from "react-dom/client";
 import "./index.css";
 
-const firstBook = {
+const books = [{
     author: "John Doe",
     title: "Interesting facts for curious minds",
     img: "./images/book-1.jpg",
-};
+},
 
-const secondBook = {
+{
     author: "Freida McFaddenFreida McFadden",
     title: "The Housemaid's Secret",
     img: "https://m.media-amazon.com/images/I/81LZXcfKqJL._AC_UL320_.jpg",
-};
+},];
+
+const names = ["john", "peter", "susan"];
+const newNames = names.map((name) => {
+    return <h1>{name}</h1>;
+});
+
+console.log(newNames);
 
 function BookList() {
     return (
         <section className='booklist'>
-            <Book
-                author={firstBook.author}
-                title={firstBook.title}
-                img={firstBook.img}
-            >
-
-            </Book>
-            <Book
-                author={secondBook.author}
-                title={secondBook.title}
-                img={secondBook.img}
-            />
+            {newNames}
         </section>
     );
 }
