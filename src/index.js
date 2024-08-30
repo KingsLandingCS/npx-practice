@@ -20,6 +20,7 @@ const books = [{
 function BookList() {
     return (
         <section className='booklist'>
+            <EventExamples />
             {books.map((book) => {
                 return <Book {...book} key={book.id}></Book>
             })}
@@ -27,14 +28,40 @@ function BookList() {
     );
 }
 
-const Book = ({ props }) => {
-    const { img, title, author } = props;
-    console.log(props);
-    return (<article className="book">
-        <img src={img} alt={title} />
-        <h2>{title}</h2>
-        <h4>{author.toUpperCase()}</h4>
-    </article >);
+const EventExamples = () => {
+    const handleFormInput = (e) => {
+        console.log("Event:", e);
+        console.log("Target:", e.target);
+        console.log("Name:", e.target.name);
+        console.log("Value:", e.target.value);
+    };
+
+    const handleButtonClick = () => {
+        alert("handle form input");
+    };
+
+    const handleFormSubmission = (e) => {
+        e.preventDefautl();
+        console.log("form submitted");
+    };
+    return (<section>
+        <form onSubmit={handleFormSubmission}>
+            <h2>Typical Form</h2>
+            <input type="text" name="example" onChange={handleFormInput} style={{ margin: "1rem 0" }} />
+        </form>
+        <button type="submit">submit</button>
+        <button onClick={handleButtonClick} type="button">click me</button>
+    </section>);
+}
+
+const Book = ({ img, title, author }) => {
+    return (
+        <article className="book">
+            <img src={img} alt={title} />
+            <h2>{title}</h2>
+            <h4>{author.toUpperCase()}</h4>
+        </article>
+    );
 };
 
 
